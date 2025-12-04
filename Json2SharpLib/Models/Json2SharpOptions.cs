@@ -27,5 +27,5 @@ public sealed record Json2SharpOptions
     /// <summary>
     /// Parsing options for the Java language.
     /// </summary>
-    public Json2SharpPythonOptions JavaOptions { get; init; } = new();
+    public Json2SharpJavaOptions JavaOptions { get; init; } = new();
 }

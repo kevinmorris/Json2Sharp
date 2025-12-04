@@ -13,69 +13,85 @@ namespace Json2SharpTests.JavaTests;
 public sealed class JavaDataTests
 {
     [Theory]
-    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.RecordOutput, CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.StructOutput, CSharpObjectType.Struct, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.RecordOutput, CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.StructOutput, CSharpObjectType.Struct, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.RecordOutput, CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.StructOutput, CSharpObjectType.Struct, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.RecordOutput, CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.RecordOutput, CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.StructOutput, CSharpObjectType.Struct, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.RecordOutput, CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.RecordOutput, CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.RecordOutput, CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.StructOutput, CSharpObjectType.Struct, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData("EmptyObject", "{}", "", CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData("EmptyObject", "{}", "", CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData("EmptyObject", "{}", "", CSharpObjectType.Record, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData("EmptyObject", "{}", "", CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    [InlineData("EmptyObject", "{}", "", CSharpObjectType.Struct, CSharpSerializationAttribute.SystemTextJson)]
-    internal void OutputTest(string className, string input, string expectedOutput, CSharpObjectType targetType, CSharpSerializationAttribute serializationAttribute)
+    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.RecordOutput, JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(IntegerTypes), IntegerTypes.Input, IntegerTypes.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.RecordOutput, JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(FloatTypes), FloatTypes.Input, FloatTypes.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.RecordOutput, JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(TextTypes), TextTypes.Input, TextTypes.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.RecordOutput, JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(BoolTypes), BoolTypes.Input, BoolTypes.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.RecordOutput, JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(ObjectTypes), ObjectTypes.Input, ObjectTypes.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.RecordOutput, JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(ArrayTypes), ArrayTypes.Input, ArrayTypes.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.RecordOutput, JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(ArrayRoot), ArrayRoot.Input, ArrayRoot.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.RecordOutput, JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(WeirdNameTypes), WeirdNameTypes.Input, WeirdNameTypes.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    [InlineData("EmptyObject", "{}", "", JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData("EmptyObject", "{}", "", JavaObjectType.Record, JavaSerializationAttribute.Jackson)]
+    [InlineData("EmptyObject", "{}", "", JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    internal void OutputTest(string className, string input, string expectedOutput, JavaObjectType targetType, JavaSerializationAttribute serializationAttribute)
     {
-        Assert.Equal(0, 1);
+        var options = new Json2SharpOptions()
+        {
+            TargetLanguage = Language.Java,
+            JavaOptions = new()
+            {
+                TargetType = targetType,
+                SerializationAttribute = serializationAttribute
+            }
+        };
+
+        var actualOutput = Json2Sharp.Parse(className, input, options);
+
+        Assert.Equal(
+            expectedOutput.Replace("\r", string.Empty),
+            actualOutput.Replace("\r", string.Empty)
+        );
     }
 
     [Theory]
-    [InlineData(nameof(CustomHandleTypes), CustomHandleTypes.Input, CustomHandleTypes.RecordPrimaryCtorOutputNoAtt, CSharpObjectType.Record, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(CustomHandleTypes), CustomHandleTypes.Input, CustomHandleTypes.RecordPrimaryCtorOutput, CSharpObjectType.Record, CSharpSerializationAttribute.NewtonsoftJson)]
-    [InlineData(nameof(CustomHandleTypes), CustomHandleTypes.Input, CustomHandleTypes.ClassOutputNoAtt, CSharpObjectType.Class, CSharpSerializationAttribute.NoAttribute)]
-    [InlineData(nameof(CustomHandleTypes), CustomHandleTypes.Input, CustomHandleTypes.ClassOutput, CSharpObjectType.Class, CSharpSerializationAttribute.SystemTextJson)]
-    internal void TypeHandleOutputTest(string className, string input, string expectedOutput, CSharpObjectType targetType, CSharpSerializationAttribute serializationAttribute)
+    [InlineData(nameof(CustomHandleTypes), CustomHandleTypes.Input, CustomHandleTypes.RecordPrimaryCtorOutputNoAtt, JavaObjectType.Record, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(CustomHandleTypes), CustomHandleTypes.Input, CustomHandleTypes.ClassOutputNoAtt, JavaObjectType.Class, JavaSerializationAttribute.NoAttribute)]
+    [InlineData(nameof(CustomHandleTypes), CustomHandleTypes.Input, CustomHandleTypes.ClassOutput, JavaObjectType.Class, JavaSerializationAttribute.Jackson)]
+    internal void TypeHandleOutputTest(string className, string input, string expectedOutput, JavaObjectType targetType, JavaSerializationAttribute serializationAttribute)
     {
-        Assert.Equal(0, 1);
+        var options = new Json2SharpOptions()
+        {
+            TargetLanguage = Language.Java,
+
+            JavaOptions = new()
+            {
+                TargetType = targetType,
+                SerializationAttribute = serializationAttribute,
+                TypeNameHandler = propertyType => propertyType.ToSnakeCase()
+            }
+        };
+
+        var actualOutput = Json2Sharp.Parse(className.ToSnakeCase(), input, options);
+
+        Assert.Equal(
+            expectedOutput.Replace("\r", string.Empty),
+            actualOutput.Replace("\r", string.Empty)
+        );
     }
 
 
